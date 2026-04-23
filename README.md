@@ -17,6 +17,12 @@
   <img src="https://img.shields.io/badge/privacy-100%25%20local-7C3AED?style=flat-square" alt="Privacy">
 </p>
 
+<p align="center">
+  <a href="https://chromewebstore.google.com/detail/replly/kldimahpmmgpanflnjdgdmibhhflclkc">
+    <img src="https://img.shields.io/badge/Chrome_Web_Store-Available_Now-0077B5?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Available in the Chrome Web Store">
+  </a>
+</p>
+
 ---
 
 ## What is Replly?
@@ -62,7 +68,11 @@ You click Replly → Extension scrapes the post/comment context
 
 ## Installation
 
-### From Source (Developer)
+### Official Method (Recommended)
+Simply add Replly to your browser from the **[Chrome Web Store](https://chromewebstore.google.com/detail/replly/kldimahpmmgpanflnjdgdmibhhflclkc)**.
+
+### Development Method (From Source)
+If you want to contribute or test the latest features before they hit the store:
 
 1. Clone this repo:
    ```bash
