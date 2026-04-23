@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Replly Setup</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; padding: 40px; background: #f3f4f6; color: #111827; display: flex; justify-content: center; }
+    .card { background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); width: 100%; max-width: 400px; position: relative; }
+    h2 { color: #0077b5; margin: 0 0 16px 0; font-size: 24px; display: flex; align-items: center; gap: 10px; }
+    p { font-size: 14px; color: #6b7280; line-height: 1.6; margin-bottom: 24px; }
+    label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+    .input-group { position: relative; margin-bottom: 16px; }
+    input { width: 100%; padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; box-sizing: border-box; background: #fff; }
+    input:disabled { background: #f9fafb; color: #9ca3af; -webkit-text-security: disc; }
+    input:focus { border-color: #0077b5; outline: none; }
+    
+    .btn-primary { background: #0077b5; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: 8px; }
+    .btn-primary:hover { background: #005a8a; }
+    
+    .btn-secondary { background: white; border: 1px solid #d1d5db; color: #374151; padding: 12px; width: 100%; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 8px; }
+    .btn-secondary:hover { background: #f9fafb; }
+
+    .status-card { margin-top: 20px; padding: 12px; border-radius: 8px; font-size: 13px; display: none; }
+    .status-card.success { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .status-card.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+    .status-card.info { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+
+    .link { font-size: 12px; color: #0077b5; text-decoration: none; margin-top: 20px; display: block; text-align: center; }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2><span>✨</span> Replly Setup</h2>
+    <p>Enter your Gemini API key to activate the assistant. Your key is stored locally on your device.</p>
+    
+    <label for="key">Gemini API Key</label>
+    <div class="input-group">
+      <input type="text" id="key" placeholder="Paste key here (AIzaSy...)">
+    </div>
+
+    <!-- State: No Key Saved -->
+    <button id="save" class="btn-primary">Save API Key</button>
+
+    <!-- State: Key Saved -->
+    <div id="manage-controls" class="hidden">
+      <button id="check" class="btn-secondary">Check Connection & Quota</button>
+      <button id="edit" class="btn-secondary" style="margin-top:8px; border:none; color:#6b7280; font-size:12px;">Change API Key</button>
+    </div>
+
+    <!-- Status Output -->
+    <div id="status" class="status-card"></div>
+
+    <a href="https://aistudio.google.com/app/apikey" target="_blank" class="link">Get a free API Key from Google</a>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

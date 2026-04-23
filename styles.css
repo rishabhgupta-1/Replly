@@ -1,0 +1,476 @@
+/* ===================================
+   Replly v4.0 — Premium Design System
+   =================================== */
+
+/* Button Styling */
+.replly-btn {
+  background: transparent;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Toolbar Mode */
+.replly-btn.toolbar-mode {
+  position: static;
+  margin-right: 4px;
+}
+
+/* Overlay Mode */
+.replly-btn.overlay-mode {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.replly-btn svg {
+  display: block;
+  border-radius: 4px;
+}
+
+.replly-btn:hover {
+  background-color: rgba(0, 119, 181, 0.1);
+  transform: scale(1.05);
+}
+
+.replly-toolbar-item {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.replly-wrapper {
+  position: static;
+}
+
+/* ===================================
+   Popup — Premium Glassmorphism Card
+   =================================== */
+
+.replly-popup {
+  width: 340px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 119, 181, 0.05);
+  padding: 0;
+  z-index: 10001;
+  animation: repllyFadeIn 0.2s ease-out;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  max-height: 520px;
+  overflow: hidden;
+}
+
+@keyframes repllyFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header */
+.replly-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.replly-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0077b5;
+  letter-spacing: -0.3px;
+}
+
+.replly-close-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.15s;
+  line-height: 1;
+}
+
+.replly-close-btn:hover {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* Popup Body */
+.replly-popup > .replly-status-bar,
+.replly-popup > textarea,
+.replly-popup > .replly-controls-row,
+.replly-popup > .replly-actions-top {
+  margin: 0 16px;
+}
+
+/* Status Bar */
+.replly-status-bar {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin-top: 12px !important;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.2px;
+}
+
+.replly-status-bar.post {
+  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.replly-status-bar.reply {
+  background: linear-gradient(135deg, #dcfce7, #f0fdf4);
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+/* Textarea */
+.replly-popup textarea {
+  width: calc(100% - 32px);
+  height: 48px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-family: inherit;
+  resize: none;
+  box-sizing: border-box;
+  margin-top: 10px !important;
+  color: #334155;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.replly-popup textarea::placeholder {
+  color: #94a3b8;
+}
+
+.replly-popup textarea:focus {
+  outline: none;
+  border-color: #0077b5;
+  box-shadow: 0 0 0 3px rgba(0, 119, 181, 0.08);
+}
+
+/* Controls Row: Length pills + Toggles */
+.replly-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px !important;
+  gap: 8px;
+}
+
+/* Length Pills */
+.replly-length-pills {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.replly-pill {
+  background: transparent;
+  border: none;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.replly-pill:hover {
+  color: #334155;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.replly-pill.active {
+  background: #ffffff;
+  color: #0077b5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Toggles */
+.replly-toggles {
+  display: flex;
+  gap: 4px;
+}
+
+.replly-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+  font-size: 14px;
+}
+
+.replly-toggle:hover {
+  background: #f1f5f9;
+}
+
+.replly-toggle input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+}
+
+.replly-toggle span {
+  opacity: 0.4;
+  transition: opacity 0.2s;
+  font-size: 16px;
+  filter: grayscale(100%);
+}
+
+.replly-toggle input:checked + span {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Generate Button */
+.replly-actions-top {
+  margin-top: 10px !important;
+  margin-bottom: 12px !important;
+}
+
+.replly-generate-btn {
+  width: calc(100% - 32px);
+  background: linear-gradient(135deg, #0077b5, #005a8a);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  letter-spacing: 0.2px;
+}
+
+.replly-generate-btn:hover {
+  background: linear-gradient(135deg, #005a8a, #004670);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+}
+
+.replly-generate-btn:active {
+  transform: translateY(0);
+}
+
+.replly-generate-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.replly-btn-icon {
+  font-size: 14px;
+}
+
+/* ===================================
+   Variants Container
+   =================================== */
+
+.replly-variants-container {
+  border-top: 1px solid #f1f5f9;
+  max-height: 300px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.replly-variants-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.replly-variants-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.replly-variants-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* Loading State */
+.replly-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 16px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.replly-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e2e8f0;
+  border-top-color: #0077b5;
+  border-radius: 50%;
+  animation: repllySpinnerSpin 0.7s linear infinite;
+}
+
+@keyframes repllySpinnerSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Variant Cards */
+.replly-variants-list {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.replly-variant-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+  transition: all 0.2s;
+  animation: repllySlideUp 0.25s ease-out;
+  animation-fill-mode: both;
+}
+
+.replly-variant-card:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.replly-variant-card:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+@keyframes repllySlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.replly-variant-card:hover {
+  border-color: #0077b5;
+  background: #f0f9ff;
+  box-shadow: 0 2px 8px rgba(0, 119, 181, 0.08);
+}
+
+.replly-variant-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #1e293b;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.replly-variant-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+/* Insert (Use This) Button */
+.replly-insert-btn {
+  background: linear-gradient(135deg, #0077b5, #0369a1);
+  color: white;
+  border: none;
+  padding: 5px 14px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.replly-insert-btn:hover {
+  background: linear-gradient(135deg, #005a8a, #004670);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 119, 181, 0.25);
+}
+
+.replly-insert-btn span {
+  font-size: 12px;
+}
+
+/* Copy Button */
+.replly-copy-btn {
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: #64748b;
+}
+
+.replly-copy-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.replly-copy-btn.copied {
+  background: #dcfce7;
+  border-color: #bbf7d0;
+  color: #15803d;
+}
+
+/* Error State */
+.replly-error {
+  padding: 16px;
+  text-align: center;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 500;
+  background: #fef2f2;
+  border-radius: 8px;
+  margin: 4px;
+  border: 1px solid #fecaca;
+}

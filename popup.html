@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Replly</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, system-ui, sans-serif; padding: 20px; width: 280px; background: #fff; color: #1f2937; }
+    
+    /* Header */
+    .header { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+    .header svg { flex-shrink: 0; }
+    .header h3 { color: #0077b5; font-size: 16px; font-weight: 700; letter-spacing: -0.3px; }
+    .header .version { font-size: 10px; color: #94a3b8; font-weight: 500; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+
+    /* Warning */
+    .setup-warning { display: none; background: linear-gradient(135deg, #fff1f2, #fef2f2); color: #9f1239; padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 14px; text-align: center; border: 1px solid #fecdd3; cursor: pointer; transition: all 0.2s; }
+    .setup-warning:hover { background: linear-gradient(135deg, #fee2e2, #fef2f2); transform: translateY(-1px); box-shadow: 0 2px 8px rgba(159,18,57,0.1); }
+    
+    /* Section */
+    .section { margin-bottom: 14px; }
+    label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #94a3b8; display: block; margin-bottom: 6px; letter-spacing: 0.5px; }
+    
+    /* Select */
+    select { width: 100%; padding: 9px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 13px; cursor: pointer; color: #334155; background: #fff; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; transition: border-color 0.2s; }
+    select:focus { border-color: #0077b5; outline: none; box-shadow: 0 0 0 3px rgba(0,119,181,0.08); }
+    select:hover { border-color: #cbd5e1; }
+
+    /* Length Pills */
+    .pills { display: flex; background: #f1f5f9; border-radius: 8px; padding: 2px; gap: 2px; }
+    .pill { flex: 1; background: transparent; border: none; padding: 7px 0; font-size: 11px; font-weight: 600; color: #64748b; border-radius: 6px; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .pill:hover { color: #334155; }
+    .pill.active { background: #fff; color: #0077b5; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+    /* Toggle Row */
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; }
+    .toggle-label { font-size: 12px; color: #475569; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+    .toggle-label .icon { font-size: 14px; }
+    
+    /* Custom Toggle Switch */
+    .switch { position: relative; width: 36px; height: 20px; flex-shrink: 0; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #e2e8f0; border-radius: 20px; transition: 0.25s; }
+    .slider:before { content: ""; position: absolute; height: 16px; width: 16px; left: 2px; bottom: 2px; background: white; border-radius: 50%; transition: 0.25s; box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+    input:checked + .slider { background: #0077b5; }
+    input:checked + .slider:before { transform: translateX(16px); }
+
+    /* Save Button */
+    button.save { width: 100%; background: linear-gradient(135deg, #0077b5, #005a8a); color: white; border: none; padding: 10px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s; margin-top: 4px; }
+    button.save:hover { background: linear-gradient(135deg, #005a8a, #004670); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,119,181,0.25); }
+    button.save:active { transform: translateY(0); }
+
+    /* Status */
+    #status { font-size: 12px; color: #059669; text-align: center; margin-top: 8px; display: none; font-weight: 500; padding: 6px; background: #ecfdf5; border-radius: 6px; }
+
+    /* Footer */
+    .footer { margin-top: 14px; border-top: 1px solid #f1f5f9; padding-top: 10px; text-align: center; }
+    .link { font-size: 11px; color: #94a3b8; text-decoration: none; transition: color 0.15s; }
+    .link:hover { color: #0077b5; }
+
+    /* Divider */
+    .divider { height: 1px; background: #f1f5f9; margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <svg width="22" height="22" viewBox="0 0 128 128" fill="none"><rect width="128" height="128" rx="32" fill="#0077B5"/><path d="M96 68C96 83.464 83.464 96 68 96C63.8824 96 59.9913 95.1098 56.5 93.5218L40 100L46.4782 83.5C44.8902 80.0087 44 76.1176 44 72C44 56.536 56.536 44 72 44C87.464 44 100 56.536 100 72Z" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M92 38L95 44L101 47L95 50L92 56L89 50L83 47L89 44L92 38Z" fill="#FFC107"/><path d="M76 24L78 28L82 30L78 32L76 36L74 32L70 30L74 28L76 24Z" fill="#FFC107"/></svg>
+    <h3>Replly</h3>
+    <span class="version">v4.0</span>
+  </div>
+  
+  <div id="setup-warning" class="setup-warning" title="Click to setup API Key">
+    ⚠️ API Key is missing<br><strong>Click here to setup</strong>
+  </div>
+
+  <div id="controls">
+    <div class="section">
+      <label for="tone">Default Tone</label>
+      <select id="tone">
+        <option value="Professional">Professional</option>
+        <option value="Enthusiastic">Enthusiastic</option>
+        <option value="Insightful">Insightful</option>
+        <option value="Funny">Funny</option>
+        <option value="Supportive">Supportive</option>
+        <option value="Questioning">Questioning</option>
+        <option value="Skeptical">Skeptical</option>
+        <option value="Informative">Informative</option>
+        <option value="Personal Anecdote">Personal Anecdote</option>
+        <option value="Constructive Criticism">Constructive Criticism</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <label>Default Length</label>
+      <div class="pills" id="length-pills">
+        <button class="pill" data-length="short">Short</button>
+        <button class="pill active" data-length="medium">Medium</button>
+        <button class="pill" data-length="long">Long</button>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="toggle-row">
+      <span class="toggle-label"><span class="icon">😀</span> Include emoji</span>
+      <label class="switch">
+        <input type="checkbox" id="emoji-toggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="toggle-row">
+      <span class="toggle-label"><span class="icon">❓</span> End with question</span>
+      <label class="switch">
+        <input type="checkbox" id="question-toggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="divider"></div>
+
+    <button id="save" class="save">Save Preferences</button>
+    <div id="status">✓ Saved!</div>
+  </div>
+
+  <div class="footer">
+    <a href="#" id="open-options" class="link">Manage API Key →</a>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
